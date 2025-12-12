@@ -15,6 +15,13 @@ This architecture simulates a typical load balanced microservice environment and
 ## Architechture
 
 ## Features
+This project demonstrates the following features:
+* Nginx reverse proxy used as a load balancer
+* Round robin traffic distribution between 3 backend containers
+* Bind mounted HTML pages for each backend
+* Isolated Docker network named appnet
+* Auto install script, start script, and stop script included
+* Clean, production like folder structure
 
 ## Prerequisites
 ### AWS
@@ -125,9 +132,8 @@ This method uses the included automation script that does the following:
   web3
   lb
    ```
-## Project File Structure
-
-## Testing
+   
+## Troubleshooting Guide
 Once the stack is installed and running, you can verify functionality using the commands below.
 ### 1. Test the Load Balancer from the EC2 instance
 Run:
@@ -216,7 +222,5 @@ Expected:
 0.0.0.0:80    LISTEN    ... docker-proxy
 ```
 This confirms the host is correctly exposing port 80 to the LB container.
-
-## Troubleshooting Guide
 
 ## Recap
