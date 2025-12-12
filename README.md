@@ -37,6 +37,7 @@ Given below is the simple architecture diagram of this project flow
 ### Option 1: Via automated scripts (recommended)
 
 This method uses the included automation script that does the following:
+==**WARNING**: This method results in automatically installing certain packages into your OS, kindly use with caution.==.
 
 - Automatically detects your os release and install Docker
 - Install Docker Compose
@@ -60,19 +61,19 @@ This method uses the included automation script that does the following:
 The installer will automatically:
  - Detect the project root
  - Install Docker (if missing)
- - Install Docker COmpose
+ - Install Docker Compose
  - Start the full stack
  - Test connectivity
  - Print troubleshoot instructions
 
 #### 3. Starting & Stopping the containers after installation
 
-If the containers are stopped, use
+If the containers are stopped, use to check if they are live.
 ```
   docker ps
 ```
 
-to check if they are live, If they are not start the load balancer setup using the start script
+If they are not started the load balancer setup using the start script
 
 ```
   sudo ./scripts/start.sh
@@ -81,7 +82,7 @@ to check if they are live, If they are not start the load balancer setup using t
 If you intend to stop the containers simply execute the shutdown script
 
 ```
-  sudo ./scripts/stop-stack.sh
+  sudo ./scripts/shutdown.sh
 ```
 
 ### Option 2: Manual setup
