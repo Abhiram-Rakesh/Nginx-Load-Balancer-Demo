@@ -39,7 +39,7 @@ This method uses the included automation script that does the following:
   git clone https://github.com/<your-github-username>/nginx-lb-demo.git
   cd nginx-lb-demo
   ```
-#### 2. Run the installer
+  #### 2. Run the installer
   ```
   sudo ./scripts/install.sh
   ```
@@ -50,77 +50,78 @@ The installer will automatically:
 * Start the full stack
 * Test connectivity
 * Print troubleshoot instructions
-#### 3. Starting & Stopping the containers after installation
-If the containers are stopped, use
- ```
+  #### 3. Starting & Stopping the containers after installation
+  If the containers are stopped, use
+```
   docker ps
- ```
-to check if they are live, If they are not start the load balancer setup using the start script
- ```
+```
+  to check if they are live, If they are not start the load balancer setup using the start script
+```
   sudo ./scripts/start.sh
- ```
+```
 
-If you intend to stop the containers simply execute the shutdown script
- ```
+  If you intend to stop the containers simply execute the shutdown script
+```
   sudo ./scripts/stop-stack.sh
- ```
+```
 ### Option 2: Manual setup
-#### 1. Install Docker
-Amazon Linux / Amazon Linux 2 / CentOS / RHEL
- ```
+  #### 1. Install Docker
+  Install the docker package based off your OS
+  Amazon Linux / Amazon Linux 2 / CentOS / RHEL
+```
   sudo yum update -y
   sudo yum install -y docker
   sudo systemctl enable docker --now
- ```
-Ubuntu / Debian
- ```
+```
+  Ubuntu / Debian
+```
   sudo apt update -y
   sudo apt install -y docker.io
   sudo systemctl enable docker --now
- ```
+```
 
-#### 2. Install Docker Compose
-Try the plugin first:
- ```
+  #### 2. Install Docker Compose
+  Try the plugin first:
+```
   docker compose version
-  ```
-If not available, install the standalone binary:
- ```
+```
+  If not available, install the standalone binary:
+```
   sudo curl -L \
   https://github.com/docker/compose/releases/download/v2.29.2/docker-compose-$(uname -s)-$(uname -m) \
   -o /usr/local/bin/docker-compose
 
   sudo chmod +x /usr/local/bin/docker-compose
- ```
+```
 
-#### 3. Clone the repository
- ```
+  #### 3. Clone the repository
+```
   git clone https://github.com/Abhiram-Rakesh/nginx-lb-demo.git
   cd nginx-lb-demo
- ```
+```
 
-#### 4. Start the stack manually
-If using the plugin:
- ```
+  #### 4. Start the stack manually
+  If using the plugin:
+```
   docker compose up -d
- ```
-If using the binary:
- ```
+```
+  If using the binary:
+```
   docker-compose up -d
- ```
+```
 
-#### 5. Verify everything is running
- ```
+  #### 5. Verify everything is running
+```
   docker ps
- ```
+```
 
-It should show all the containers
- ```
+  It should show all the containers
+```
   web1
   web2
   web3
   lb
- ```
+```
 ## Project File Structure
 
 ## Testing
