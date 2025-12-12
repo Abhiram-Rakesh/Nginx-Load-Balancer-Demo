@@ -128,6 +128,94 @@ This method uses the included automation script that does the following:
 ## Project File Structure
 
 ## Testing
+Once the stack is installed and running, you can verify functionality using the commands below.
+### 1. Test the Load Balancer from the EC2 instance
+Run:
+```
+curl localhost
+```
+Expected output (rotating every time you run it):
+```
+web1
+web2
+web3
+```
+This confirms:
+* The LB container is running
+* Nginx is forwarding requests to backend containers
+* Internal networking (appnet) is working
+### 2. Test the Load Balancer from your PC
+Open in following IP in your browser
+```
+http://<EC2-PUBLIC-IP>/
+```
+
+Or test via terminal:
+```
+curl http://<EC2-PUBLIC-IP>/
+```
+You should again see:
+```
+web1
+web2
+web3
+```
+If the browser hangs, check Security Group prot:
+* Inbound rule: TCP 80 -> 0.0.0.0/0 (or "My IP")
+
+### 3. Test backend containers directly from the LB
+Connect to your web containers and run the curl command.
+```
+docker exec lb curl http://web1/
+docker exec lb curl http://web2/
+docker exec lb curl http://web3/
+```
+
+Expected:
+```
+<h1>web1</h1>
+<h1>web2</h1>
+<h1>web3</h1>
+```
+
+This confirms:
+* The LB can resolve backend container names via DNS
+* Each backend container is accessible
+* Docker network (appnet) is configured correctly
+
+### 4. Verify containers are running
+Edit the docker list format so that the ports are clearly visible
+```
+docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+```
+Expected:
+```
+lb     Up ...   0.0.0.0:80->80/tcp
+web1   Up ...
+web2   Up ...
+web3   Up ...
+```
+If lb is missing, the stack dident start correctly
+
+#### 5. Inspect LB Logs
+```
+docker logs lb
+```
+You should not see errors like:
+* host not found in upstream
+* connect() failed
+* connection refused
+If you do, your containers are not attached to the same network.
+
+#### 6. Test port listening on host
+```
+sudo ss -ltnp | grep ':80'
+```
+Expected:
+```
+0.0.0.0:80    LISTEN    ... docker-proxy
+```
+This confirms the host is correctly exposing port 80 to the LB container.
 
 ## Troubleshooting Guide
 
