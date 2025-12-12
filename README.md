@@ -17,6 +17,14 @@ This architecture simulates a typical load balanced microservice environment and
 ## Features
 
 ## Prerequisites
+### AWS
+* 1 EC2 Instance (Amazon Linux 2 recommended)
+* Security Group inbound rules:
+  - SSH (22) - required
+  - HTTP (80) - must be added for LB access
+### EC2 Host Requirements
+* Docker installed
+* Docker Compose installed
 
 ## Installation Instructions
 
