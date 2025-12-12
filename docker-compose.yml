@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  web1:
+    image: nginx:alpine
+    container_name: web1
+    volumes:
+      - ./web1/index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - appnet
+
+  web2:
+    image: nginx:alpine
+    container_name: web2
+    volumes:
+      - ./web2/index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - appnet
+
+  web3:
+    image: nginx:alpine
+    container_name: web3
+    volumes:
+      - ./web3/index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - appnet
+
+  lb:
+    image: nginx:alpine
+    container_name: lb
+    ports:
+      - "80:80"
+    volumes:
+      - ./lb/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - web1
+      - web2
+      - web3
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
