@@ -67,21 +67,21 @@ This method uses the included automation script that does the following:
   ```
   sudo ./scripts/stop-stack.sh
   ```
-### Option 2: Manual setup
-  #### 1. Install Docker
-  Install the docker package based off your OS
-  Amazon Linux / Amazon Linux 2 / CentOS / RHEL
-  ```
+  ### Option 2: Manual setup
+    #### 1. Install Docker
+    Install the docker package based off your OS
+    Amazon Linux / Amazon Linux 2 / CentOS / RHEL
+    ```
   sudo yum update -y
   sudo yum install -y docker
   sudo systemctl enable docker --now
-  ```
-  Ubuntu / Debian
-  ```
+    ```
+    Ubuntu / Debian
+    ```
   sudo apt update -y
   sudo apt install -y docker.io
   sudo systemctl enable docker --now
-  ```
+    ```
 
   #### 2. Install Docker Compose
   Try the plugin first:
