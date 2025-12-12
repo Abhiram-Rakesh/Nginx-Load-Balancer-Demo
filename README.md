@@ -50,7 +50,7 @@ This method uses the included automation script that does the following:
 
 ```
   git clone https://github.com/Abhiram-Rakesh/Nginx-Load-Balancer-Demo.git
-  cd nginx-lb-demo
+  cd Nginx-Load-Balancer-Demo
 ```
 
 #### 2. Run the installer
@@ -128,8 +128,8 @@ sudo chmod +x /usr/local/bin/docker-compose
 #### 3. Clone the repository
 
 ```
-git clone https://github.com/Abhiram-Rakesh/nginx-lb-demo.git
-cd nginx-lb-demo
+git clone https://github.com/Abhiram-Rakesh/Nginx-Load-Balancer-Demo.git
+cd Nginx-Load-Balancer-Demo
 ```
 
 #### 4. Start the stack manually
