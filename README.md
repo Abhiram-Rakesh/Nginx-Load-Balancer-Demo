@@ -13,15 +13,8 @@ The setup uses Docker Compose to orchestrate 4 containers:
 This architecture simulates a typical load balanced microservice environment and is ideal for learning Nginx upstream configuration, Docker Compose, networking, and infrastructure basics.
 
 ## Architechture
-
-## Features
-This project demonstrates the following features:
-* Nginx reverse proxy used as a load balancer
-* Round robin traffic distribution between 3 backend containers
-* Bind mounted HTML pages for each backend
-* Isolated Docker network named appnet
-* Auto install script, start script, and stop script included
-* Clean, production like folder structure
+Given below is the simple architecture diagram of this project flow
+<img width="1022" height="872" alt="nginx-lb-demo" src="https://github.com/user-attachments/assets/00d21593-3979-4d3e-8535-5a54134fe3c7" />
 
 ## Prerequisites
 ### AWS
@@ -224,3 +217,20 @@ Expected:
 This confirms the host is correctly exposing port 80 to the LB container.
 
 ## Recap
+Key concepts used in this demo
+### Docker Compose Networking
+All containers share the same appnet bridge, enabling hostname based routing (web1, web2, web3)
+
+### Bind Mounts
+Each web container mounts a unique index.html file from the host.
+
+### Reverse Proxying
+The LB uses proxy_pass to forward requests to upstream servers.
+
+### Header Forwarding
+* $host - preserve original hostname
+* $remote_addr - client real IP
+* $proxy_add_xforwarded_for - full chain of proxy IPs
+
+### Upstream Load Balancing
+used a reverse proxy based upstream Load Balancing at default Round Robin method.
