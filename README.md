@@ -47,7 +47,7 @@ This method uses the included automation script that does the following:
 #### 1. Clone this repository
 
 ```
-  git clone https://github.com/<your-github-username>/nginx-lb-demo.git
+  git clone https://github.com/Abhiram-Rakesh/Nginx-Load-Balancer-Demo.git
   cd nginx-lb-demo
 ```
 
