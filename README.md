@@ -6,10 +6,10 @@ This project demonstrates how to run multiple Nginx web server containers (web1,
 
 The setup uses Docker Compose to orchestrate 4 containers:
 
-- web1 - Nginx web server
-- web2 - Nginx web server
-- web3 - Nginx web server
-- lb - Nginx reverse proxy that acts as a load balancer that distributes traffic to web1,web2,web3 using the default round robin method.
+- `web1` - Nginx web server
+- `web2` - Nginx web server
+- `web3` - Nginx web server
+- `lb` - Nginx reverse proxy that acts as a load balancer that distributes traffic to web1,web2,web3 using the default round robin method.
 
 This architecture simulates a typical load balanced microservice environment and is ideal for learning Nginx upstream configuration, Docker Compose, networking, and infrastructure basics.
 
@@ -37,7 +37,8 @@ Given below is the simple architecture diagram of this project flow
 ### Option 1: Via automated scripts (recommended)
 
 This method uses the included automation script that does the following:
-==**WARNING**: This method results in automatically installing certain packages into your OS, kindly use with caution.==.
+
+**WARNING**: This method results in automatically installing certain packages into your OS, kindly use with caution.
 
 - Automatically detects your os release and install Docker
 - Install Docker Compose
@@ -300,9 +301,9 @@ The LB uses proxy_pass to forward requests to upstream servers.
 
 #### Header Forwarding
 
-- $host - preserve original hostname
-- $remote_addr - client real IP
-- $proxy_add_xforwarded_for - full chain of proxy IPs
+- `$host` - preserve original hostname
+- `$remote_addr` - client real IP
+- `$proxy_add_xforwarded_for` - full chain of proxy IPs
 
 #### Upstream Load Balancing
 
