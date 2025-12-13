@@ -51,6 +51,7 @@ This method uses the included automation script that does the following:
 ```
   git clone https://github.com/Abhiram-Rakesh/Nginx-Load-Balancer-Demo.git
   cd Nginx-Load-Balancer-Demo
+  chmod +x scripts/install.sh start.sh shutdown.sh
 ```
 
 #### 2. Run the installer
